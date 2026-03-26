@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panworld Education</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="blob blob-top-right"></div>
+
+    <main class="container">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Panworld Education</title>
+        <link rel="stylesheet" href="css/style.css" />
+
+        <script
+          type="text/javascript"
+          src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
+        ></script>
+
+        <script type="text/javascript">
+          (function () {
+            emailjs.init("9OmpRiJU4LVcLgMQB");
+          })();
+        </script>
+      </head>
+      <header class="event-header">
+        <div class="header-logo">
+          <img
+            src="images/Kodit_logo.png"
+            alt="Kodeit Logo"
+            class="main-logo"
+          />
+          <h1>Panworld Education</h1>
+        </div>
+      </header>
+      <div class="main-content-grid">
+        <section class="left-column">
+          <div class="why-register-box">
+            <div class="why-register-content">
+              <h3 class="ramadan-title">Better Teaching.<br> Brighter Futures.</h3>
+              <p class="ramadan-message-secondary">
+                Join our webinar series, built for school educators who want sharper methods, stronger engagement, and real results in the classroom.
+              </p>
+              <br>
+              <p class="ramadan-message-secondary">
+                We will be sending subject wise email with dedicated zoom link. I will send the zoom link tomorrow. 
+              </p>
+              <br>
+              <p class="ramadan-message-primary">
+                Reserve your seat . 
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section class="right-column">
+          <div class="form-container">
+            <h2>Registration Form</h2>
+            <p class="form-description">Please fill in your details below.</p>
+
+            <hr class="form-divider" />
+
+            <form id="registrationForm" action="send_email.php" method="POST">
+              <div class="form-group">
+                <label for="fullName" class="form-label"
+                  >Full Name <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="fullName"
+                  name="fullName"
+                  class="form-input"
+                  placeholder="Enter your full name"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email" class="form-label"
+                  >Email Address <span class="required">*</span></label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  class="form-input"
+                  placeholder="Enter your email"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="mobile" class="form-label">
+                  Mobile Number (WhatsApp) <span class="required">*</span>
+                </label>
+
+                <div class="phone-input-container">
+                  <div class="country-code-dropdown" id="countryCodeDropdown">
+                    <div class="country-code-selected" onclick="toggleCountryDropdown()">
+                      <img src="images/uae-flag.svg" alt="UAE Flag" class="phone-flag-img" id="selectedFlag" />
+                      <span class="country-code" id="selectedCode">+971</span>
+                      <span class="country-arrow">&#9662;</span>
+                    </div>
+                    <div class="country-code-options" id="countryOptions">
+                      <div class="country-option" data-code="971" data-flag="images/uae-flag.svg" data-label="UAE">
+                        <img src="images/uae-flag.svg" alt="UAE" class="phone-flag-img" />
+                        <span>+971</span>
+                      </div>
+                      <div class="country-option" data-code="966" data-flag="images/uae-flag.webp" data-label="KSA">
+                        <img src="images/uae-flag.webp" alt="KSA" class="phone-flag-img" />
+                        <span>+966</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="vertical-line"></div>
+
+                  <input
+                    type="tel"
+                    id="mobile"
+                    name="mobile"
+                    class="form-input phone-input"
+                    placeholder="Enter your mobile number"
+                    required
+                  />
+                </div>
+                <input
+                  type="hidden"
+                  name="country_code"
+                  id="country_code_input"
+                  value="971"
+                />
+              </div>
+
+              <!-- <div class="form-group">
+                <label for="city" class="form-label"
+                  >City <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="city"
+                  name="city"
+                  class="form-input"
+                  placeholder="Enter your city"
+                  required
+                />
+              </div> -->
+
+              <div class="form-section">
+                <h3 class="section-title">Professional Details</h3>
+
+                <hr class="form-divider" />
+
+                <div class="form-group">
+                  <label for="school" class="form-label"
+                    >Name of School
+                    <span class="required">*</span></label
+                  >
+                  <input
+                    type="text"
+                    id="school"
+                    name="school"
+                    class="form-input"
+                    placeholder="Enter your school/institute name"
+                    required
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label"
+                    >Designation <span class="required">*</span></label
+                  >
+                  <div class="role-options-grid">
+                    <label class="custom-radio">
+                      <input
+                        type="radio"
+                        name="role"
+                        value="Teacher"
+                        required
+                      />
+                      <span>Teacher</span>
+                    </label>
+                    <label class="custom-radio">
+                      <input
+                        type="radio"
+                        name="role"
+                        value="Subject Head / Coordinator"
+                      />
+                      <span>Subject Head / Coordinator</span>
+                    </label>
+                    <label class="custom-radio">
+                      <input type="radio" name="role" value="ICT Head" />
+                      <span>ICT Head</span>
+                    </label>
+                    <label class="custom-radio">
+                      <input type="radio" name="role" value="Academic Leader" />
+                      <span>Academic Leader</span>
+                    </label>
+                    <label class="custom-radio">
+                      <input
+                        type="radio"
+                        name="role"
+                        value="School Leadership"
+                      />
+                      <span>School Leadership</span>
+                    </label>
+                    <label class="custom-radio">
+                      <input type="radio" name="role" value="Other" />
+                      <span>Other</span>
+                    </label>
+                  </div>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label class="form-label schedule-heading">Schedule</label>
+                  <p class="schedule-tagline">Select at least one topic to receive ZOOM Link. <span class="required">*</span></p>
+                  <p class="schedule-error" id="scheduleError" style="display:none;">Please select at least one schedule option.</p>
+                </div>
+
+                <hr class="form-divider" />
+
+                <div class="form-group">
+                  <label class="form-label">Wednesday - 1 April 2026</label>
+                  <div class="custom-multiselect schedule-dropdown" id="wednesdayDropdown">
+                    <div class="select-box" onclick="toggleScheduleDropdown('wednesdayDropdown')">
+                      <span class="placeholder-text">Select your schedule</span>
+                      <span class="arrow"></span>
+                    </div>
+                    <div class="checkboxes-container">
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="wednesday_schedule" value="11:00 AM KSA | 12:00 PM UAE — Wonders" />
+                        <span>11:00 AM KSA | 12:00 PM UAE — Wonders</span>
+                      </label>
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="wednesday_schedule" value="11:00 AM KSA | 12:00 PM UAE — Inspire Science" />
+                        <span>11:00 AM KSA | 12:00 PM UAE — Inspire Science</span>
+                      </label>
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="wednesday_schedule" value="12:00 PM KSA | 1:00 PM UAE — StudySync" />
+                        <span>12:00 PM KSA | 1:00 PM UAE — StudySync</span>
+                      </label>
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="wednesday_schedule" value="12:00 PM KSA | 1:00 PM UAE — Reveal Math" />
+                        <span>12:00 PM KSA | 1:00 PM UAE — Reveal Math</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Saturday - 4 April 2026</label>
+                  <div class="custom-multiselect schedule-dropdown" id="saturdayDropdown">
+                    <div class="select-box" onclick="toggleScheduleDropdown('saturdayDropdown')">
+                      <span class="placeholder-text">Select your schedule</span>
+                      <span class="arrow"></span>
+                    </div>
+                    <div class="checkboxes-container">
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="saturday_schedule" value="10:00 AM KSA | 11:00 AM UAE — Wonders" />
+                        <span>10:00 AM KSA | 11:00 AM UAE — Wonders</span>
+                      </label>
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="saturday_schedule" value="10:00 AM KSA | 11:00 AM UAE — Inspire Science" />
+                        <span>10:00 AM KSA | 11:00 AM UAE — Inspire Science</span>
+                      </label>
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="saturday_schedule" value="11:00 AM KSA | 12:00 PM UAE — StudySync" />
+                        <span>11:00 AM KSA | 12:00 PM UAE — StudySync</span>
+                      </label>
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="saturday_schedule" value="11:00 AM KSA | 12:00 PM UAE — Reveal Math" />
+                        <span>11:00 AM KSA | 12:00 PM UAE — Reveal Math</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Monday - 6 April 2026</label>
+                  <div class="custom-multiselect schedule-dropdown" id="monday6Dropdown">
+                    <div class="select-box" onclick="toggleScheduleDropdown('monday6Dropdown')">
+                      <span class="placeholder-text">Select your schedule</span>
+                      <span class="arrow"></span>
+                    </div>
+                    <div class="checkboxes-container">
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="monday6_schedule" value="11:00 AM KSA | 12:00 PM UAE — Kodeit KG" />
+                        <span>11:00 AM KSA | 12:00 PM UAE — Kodeit KG</span>
+                      </label>
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="monday6_schedule" value="11:00 AM KSA | 12:00 PM UAE — Kodeit ICT" />
+                        <span>11:00 AM KSA | 12:00 PM UAE — Kodeit ICT</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Wednesday - 8 April 2026</label>
+                  <div class="custom-multiselect schedule-dropdown" id="wednesday8Dropdown">
+                    <div class="select-box" onclick="toggleScheduleDropdown('wednesday8Dropdown')">
+                      <span class="placeholder-text">Select your schedule</span>
+                      <span class="arrow"></span>
+                    </div>
+                    <div class="checkboxes-container">
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="wednesday8_schedule" value="11:00 AM KSA | 12:00 PM UAE — Platform Optimization — Existing Kodeit Schools" />
+                        <span>11:00 AM KSA | 12:00 PM UAE — Platform Optimization — Existing Kodeit Schools</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Saturday - 11 April 2026</label>
+                  <div class="custom-multiselect schedule-dropdown" id="saturday11Dropdown">
+                    <div class="select-box" onclick="toggleScheduleDropdown('saturday11Dropdown')">
+                      <span class="placeholder-text">Select your schedule</span>
+                      <span class="arrow"></span>
+                    </div>
+                    <div class="checkboxes-container">
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="saturday11_schedule" value="10:00 AM KSA | 12:00 PM UAE — Platform Optimization — Existing Kodeit Schools" />
+                        <span>10:00 AM KSA | 12:00 PM UAE — Platform Optimization — Existing Kodeit Schools</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Monday - 13 April 2026</label>
+                  <div class="custom-multiselect schedule-dropdown" id="monday13Dropdown">
+                    <div class="select-box" onclick="toggleScheduleDropdown('monday13Dropdown')">
+                      <span class="placeholder-text">Select your schedule</span>
+                      <span class="arrow"></span>
+                    </div>
+                    <div class="checkboxes-container">
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="monday13_schedule" value="11:00 AM KSA | 12:00 PM UAE — Kodeit KG" />
+                        <span>11:00 AM KSA | 12:00 PM UAE — Kodeit KG</span>
+                      </label>
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="monday13_schedule" value="11:00 AM KSA | 12:00 PM UAE — Kodeit ICT" />
+                        <span>11:00 AM KSA | 12:00 PM UAE — Kodeit ICT</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label">Saturday - 18 April 2026</label>
+                  <div class="custom-multiselect schedule-dropdown" id="saturday18Dropdown">
+                    <div class="select-box" onclick="toggleScheduleDropdown('saturday18Dropdown')">
+                      <span class="placeholder-text">Select your schedule</span>
+                      <span class="arrow"></span>
+                    </div>
+                    <div class="checkboxes-container">
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="saturday18_schedule" value="10:00 AM KSA | 12:00 PM UAE — Kodeit KG" />
+                        <span>10:00 AM KSA | 12:00 PM UAE — Kodeit KG</span>
+                      </label>
+                      <label class="checkbox-option">
+                        <input type="checkbox" name="saturday18_schedule" value="10:00 AM KSA | 12:00 PM UAE — Kodeit ICT" />
+                        <span>10:00 AM KSA | 12:00 PM UAE — Kodeit ICT</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <hr class="form-divider" />
+
+              <div class="form-actions">
+                <button type="submit" class="btn-submit-modern">
+                  Submit Registration
+                </button>
+                <button type="reset" class="btn-reset-modern">
+                  Reset Fields
+                </button>
+              </div>
+            </form>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,2 +1,2 @@
-# webinar-kodeit-panworld
-webinar-kodeit-panworld
+# kodeit-educator-event
+Kodeit Educator Event
