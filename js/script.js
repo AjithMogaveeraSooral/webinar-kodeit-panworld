@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const registrationForm = document.getElementById('registrationForm');
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzd8KqumNTmMBVRjnTGd8DMVfje9NmY1EeeqoxZ8glgCTNfJz_E0D6rgZ5zdMKL21RjeQ/exec'; // <--- Paste your App Script URL here
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyuN2BFkRhYdGdi0cXuLr9kBYtQJ_csOWjY1CXv4OpAwPCXhoOpOm5aLUFDJeDdgTTOSA/exec'; // <--- Paste your App Script URL here
 
     registrationForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -28,12 +28,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const mobileNum = formData.get('mobile');
         formData.set('mobile', countryCode + mobileNum);
 
-        // Collect schedule checkbox values
-        const tue5Checked = document.querySelectorAll('input[name="tuesday5_schedule"]:checked');
-        formData.set('tuesday5_schedule', Array.from(tue5Checked).map(cb => cb.value).join(', '));
+        // Collect Saturday 25 April schedule checkboxes (each has its own name)
+        const sat25ScheduleNames = [
+            'saturday25_inspire_science_schedule',
+            'saturday25_wonders_schedule',
+            'saturday25_reveal_math_schedule',
+            'saturday25_study_sync_schedule'
+        ];
+        sat25ScheduleNames.forEach(name => {
+            const cb = document.querySelector('input[name="' + name + '"]:checked');
+            if (cb) formData.set(name, cb.value);
+        });
 
-        const sat9Checked = document.querySelectorAll('input[name="saturday9_schedule"]:checked');
-        formData.set('saturday9_schedule', Array.from(sat9Checked).map(cb => cb.value).join(', '));
+        // Collect Wednesday 29 April schedule checkboxes (each has its own name)
+        const wed29ScheduleNames = [
+            'wednesday29_inspire_science_schedule',
+            'wednesday29_wonders_schedule',
+            'wednesday29_reveal_math_schedule',
+            'wednesday29_study_sync_schedule'
+        ];
+        wed29ScheduleNames.forEach(name => {
+            const cb = document.querySelector('input[name="' + name + '"]:checked');
+            if (cb) formData.set(name, cb.value);
+        });
 
         fetch(scriptURL, { 
             method: 'POST', 
