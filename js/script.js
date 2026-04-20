@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
     const registrationForm = document.getElementById('registrationForm');
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwzBEdA9IgzEN8gmOamjTnyWN0hANSrw62pPMacInS-tjDy7WKSiirhmupwJu0JBTpM/exec'; // <--- Paste your App Script URL here
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwWJO5i3Y8zVDgefsX3uvfqyMOKjUfF_xeIztpNlZq9eYMDZyYKM_7sYaY4FYFzkYlvmg/exec'; // <--- Paste your App Script URL here
 
     registrationForm.addEventListener('submit', function(e) {
         e.preventDefault();
@@ -28,29 +28,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const mobileNum = formData.get('mobile');
         formData.set('mobile', countryCode + mobileNum);
 
-        // Collect schedule checkbox values
-        const wedChecked = document.querySelectorAll('input[name="wednesday_schedule"]:checked');
-        const wedValues = Array.from(wedChecked).map(cb => cb.value).join(', ');
-        formData.set('wednesday_schedule', wedValues);
-
-        const satChecked = document.querySelectorAll('input[name="saturday_schedule"]:checked');
-        const satValues = Array.from(satChecked).map(cb => cb.value).join(', ');
-        formData.set('saturday_schedule', satValues);
-
-        const mon6Checked = document.querySelectorAll('input[name="monday6_schedule"]:checked');
-        formData.set('monday6_schedule', Array.from(mon6Checked).map(cb => cb.value).join(', '));
-
-        const wed8Checked = document.querySelectorAll('input[name="wednesday8_schedule"]:checked');
-        formData.set('wednesday8_schedule', Array.from(wed8Checked).map(cb => cb.value).join(', '));
-
-        const sat11Checked = document.querySelectorAll('input[name="saturday11_schedule"]:checked');
-        formData.set('saturday11_schedule', Array.from(sat11Checked).map(cb => cb.value).join(', '));
-
-        const mon13Checked = document.querySelectorAll('input[name="monday13_schedule"]:checked');
-        formData.set('monday13_schedule', Array.from(mon13Checked).map(cb => cb.value).join(', '));
-
-        const sat18Checked = document.querySelectorAll('input[name="saturday18_schedule"]:checked');
-        formData.set('saturday18_schedule', Array.from(sat18Checked).map(cb => cb.value).join(', '));
+        // Collect Saturday 25 April schedule checkboxes (each has its own name)
+        const sat25ScheduleNames = [
+            'saturday25_inspire_science_schedule',
+            'saturday25_wonders_schedule',
+            'saturday25_reveal_math_schedule',
+            'saturday25_study_sync_schedule'
+        ];
+        sat25ScheduleNames.forEach(name => {
+            const cb = document.querySelector('input[name="' + name + '"]:checked');
+            if (cb) formData.set(name, cb.value);
+        });
 
         fetch(scriptURL, { 
             method: 'POST', 

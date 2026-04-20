@@ -81,6 +81,12 @@ h1 {
   max-width: 600px;
 }
 
+.logo-row {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
 .main-logo {
   max-width: 300px;
   width: 100%;
