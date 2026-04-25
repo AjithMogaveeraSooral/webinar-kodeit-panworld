@@ -714,6 +714,49 @@ h1 {
   font-family: "Gilroy", sans-serif;
 }
 
+/* Consent checkbox */
+.consent-group {
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+
+.consent-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-family: "Gilroy", sans-serif;
+  font-size: 14px;
+  color: #595959;
+  line-height: 1.5;
+}
+
+.consent-label input[type="checkbox"] {
+  margin-top: 3px;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;
+  accent-color: var(--accent-blue);
+  cursor: pointer;
+}
+
+.consent-text a {
+  color: var(--accent-blue);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.consent-text a:hover {
+  color: var(--primary-color);
+}
+
+.consent-error {
+  font-size: 13px;
+  color: #e74c3c;
+  margin: 6px 0 0 28px;
+  font-family: "Gilroy", sans-serif;
+}
+
 .schedule-dropdown .select-box .arrow {
   border-color: transparent;
   border-width: 0;

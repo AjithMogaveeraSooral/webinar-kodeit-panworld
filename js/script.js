@@ -15,6 +15,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         scheduleError.style.display = 'none';
 
+        // Validate consent checkbox
+        const consentCheckbox = document.getElementById('consentCheckbox');
+        const consentError = document.getElementById('consentError');
+        if (!consentCheckbox.checked) {
+            consentError.style.display = 'block';
+            consentCheckbox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+        }
+        consentError.style.display = 'none';
+
         const submitBtn = document.querySelector('.btn-submit-modern');
         const originalText = submitBtn.innerText;
         submitBtn.innerText = "Processing...";
